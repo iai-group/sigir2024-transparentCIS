@@ -1,0 +1,41 @@
+# Results of Qualitative Analysis
+
+The following s| ECtions provides details about the qualitative analysis of the comments provided by crowd workers in the user study.
+
+## Sel| ECted Comments Provided by Crowd Workers
+
+| Exper. Cond. | Component | User's Feedback | Main Point |
+| --- | --- | --- | --- |
+| EC1 | Source | They all had a citation, but only one, and sometimes more perspectives were called for. | Limited sources |
+| EC1 | Confidence | I noticed the bars, but I wasn't sure how the assistant was coming up with its confidence level. | No confidence explanation |
+| EC2 | Source | The responses were supported by relevant and accurate information, addressing the questions adequately. | Relevant sources |
+| EC2 | Limitation | In several responses, the assistant encouraged to verify critical information from authoritative sources. This proactive stance reinforces the idea should independently verify important details, promoting a cautious approach. | Encouraging information verification |
+| EC2 | Confidence | I understand it provided what it believed to be it's confidence in the answer, but knowing what that number is based on would be helpful. | No confidence explanation |
+| EC3 | Limitation | ... a more explicit discussion of potential limitations or diverse perspectives could have been beneficial for a fuller understanding. | No limitations explanation |
+| EC3 | Confidence | This transparency in indicating confidence levels allows users to gauge the system's certainty in the provided responses. | Transparency |
+| EC4 | Confidence | The assistant is less certain about the accuracy of the information provided. This awareness is crucial for interpreting and verifying the information obtained from the assistant. | Critical evaluation |
+| EC5 | Source | The responses were well-supported because they included relevant information, sources, and context to address the given prompts ... | Relevant sources |
+| EC5 | Limitation | \dots This acknowledgment highlighted the assistant's awareness of certain boundaries, privacy concerns, or potential ethical considerations related to specific topics. This helped me understand the constraints within which the assistant operates and the areas where it might not provide detailed information due to the nature of the query | Understanding system constraints |
+| EC5 | Confidence | The assistant consistently indicated its confidence level in each response. This feature provided transparency about the reliability of the information and the extent to which the assistant could guarantee accuracy. The confidence indicators were helpful in understanding the context and reliability of the provided information, allowing me to assess the responses with an awareness of the assistant's level of certainty. This transparency contributed to a more informed evaluation of the responses. | Transparency |
+| EC6 | Limitation | The assistant explicitly acknowledged potential limitations in several responses, mentioning factors such as bias in the questions. This helped me understand the potential constraints and caveats associated with the information provided. | Understanding response constraints |
+| EC7 | Confidence | I appreciated the symbol showing the confidence of the AI's response, but it seemed a bit abstract.  I would have preferred a simple percentage confidence to the symbol that resembles a wifi connection symbol.  I think that would have been more helpful and precise. | Preference towards textual confidence info |
+| EC7 | Confidence | The access to a confidence score provided by the system, which reflects the model's estimate of the accuracy and reliability of its responses. | Interpretation of confidence score |
+| EC8 | Limitation | \dots This transparency from the assistant helped me understand the potential biases or external influences that might affect the objectivity of the responses. This awareness of limitations enhances the user's critical evaluation of the information provided and promotes a more informed interaction with the assistant. | Encouraging information verification |
+| EC8 | Confidence | ... The assistant frequently indicated its confidence levels, ranging from 80\% to 100\%, alongside certain responses. This information was provided as a transparency measure to indicate the system's level of certainty regarding the accuracy or relevance of the information shared. | Interpretation of confidence score |
+| EC9 | Limitation | The assistant's responses provided valuable information and insights on the respective topics, but it's essential to acknowledge potential limitations. | No info about limitations |
+| EC9 | Confidence | I'm not sure how I could judge the confidence of the assistant. | No info about confidence |
+| EC10 | Limitations | The assistant did not proactively highlight potential limitations in a positive way, missing an opportunity to promote critical thinking about the information provided. | No info about limitations |
+| EC10 | Confidence | The assistant doesn't provide explicit indicators of confidence or uncertainty in its, responses, making it challenging to gauge the reliability of the information. | No info about confidence |
+| EC10 | Confidence | There were no qualifying statements like "I think" or "I believe", it stated it's answers confidently as if they were facts. | Confidence indicated by NL statements |
+
+## Manual Annotation of Comments
+
+We manually investigate the feedback given by crowd workers regarding their ratings for the source, confidence, and limitations explanations, seeking insights and suggestions to enhance their content and presentation. The manual labels can be found .
+
+### Analysis of the results
+
+Many workers (18/160) pointed out that explanations related to limitations and confidence significantly enhanced their understanding of the constraints of both the system and the responses. The mention of encouragement towards information verification and critical thinking was consistent across various qualities (comments from EC1-EC8 HITs), and positive comments were also shared when these components were flawed (EC5-EC8). It suggests that workers may face challenges in identifying inaccuracies in the explanations. For instance, despite the fact that provided sources in the HITs did not align with the information in the response, users did not identify these inaccuracies  - i.e., there were no comments highlighting a mismatch between the source and the response. Nevertheless, a number of crowd workers (4/160) emphasize the potential insufficiency of responses restricted to three sentences and a single source in certain situations.
+
+Several (3/160) crowd workers expressed uncertainty in interpreting explanations related to limitations and confidence scores, underscoring the need for additional explanations or tutorials describing the system interface before usage. For instance, some workers attempted to interpret the meaning of the confidence score on their own describing it as a __"transparency measure to indicate the system’s level of certainty regarding the accuracy or relevance of the information shared"__ or a __"model's estimate of the accuracy and reliability of its responses"__. 
+
+In terms of the presentation mode, one worker suggested that representing confidence score using percentages would be more precise and helpful than a "wifi connection symbol". This suggests that users may prefer a continuous scale to represent confidence, although it would require a more precise estimation of confidence. A similar experiment could be carried out with the use of a fuel gauge display. In HITs with no explanations (EC9 and EC10), workers highlighted their lack of awareness regarding response limitations and confidence. Some workers attempted to gauge system confidence by searching for implicit confidence signals like "I think" or "I believe" in the responses. Overall, workers consistently emphasized that explanations enhance their understanding and encourages information verification and critical thinking. However, the comments reflect that workers are unlikely to identify flaws in the explanations such as source attribution, system confidence, and limitations.
