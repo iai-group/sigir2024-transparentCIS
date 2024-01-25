@@ -1,8 +1,8 @@
 # Results of Qualitative Analysis
 
-The following s| ECtions provides details about the qualitative analysis of the comments provided by crowd workers in the user study.
+The following sections provides details about the qualitative analysis of the comments provided by crowd workers in the user study.
 
-## Sel| ECted Comments Provided by Crowd Workers
+## Selected Comments Provided by Crowd Workers
 
 | Exper. Cond. | Component | User's Feedback | Main Point |
 | --- | --- | --- | --- |
