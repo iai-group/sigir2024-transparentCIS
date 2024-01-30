@@ -8,18 +8,7 @@ if __name__ == "__main__":
 
     question_set_data_mturk_dict_final = []
 
-    for experimental_condition in [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
-        "7",
-        "8",
-        "9",
-        "10",
-    ]:
+    for experimental_condition in [str(i) for i in range(1,11)]:
         question_set = ["EC" + experimental_condition] * 10
 
         responses_to_add = []
@@ -157,9 +146,9 @@ if __name__ == "__main__":
         )
 
         question_set_data = question_set_data.sample(frac=1)
-        question_set_data.to_csv(
-            "qs" + experimental_condition + ".csv", index=False
-        )
+        # question_set_data.to_csv(
+        #     "qs" + experimental_condition + ".csv", index=False
+        # )
 
         question_set_data_mturk_dict = {}
 
