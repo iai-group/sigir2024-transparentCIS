@@ -2,13 +2,9 @@
 
 A critical element of the study is selecting query-response pairs and explanations enhancing the responses that enable us to answer our research questions.
 
-## Queries
+## Pilot Study
 
-Details about the process of selecting queries for this use study are covered [here](queries/README.md).
-
-## Responses and Explanations
-
-Details about the process of generating responses and explanations for this use study are covered [here](responses/README.md).
+Details about the pilot study execution and results can be found [here](pilot_study/README.md).
 
 ## Input Data
 

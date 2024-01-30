@@ -19,7 +19,7 @@ Part C contains a pre-use explanation of the system. It aims at improving the fo
 - d) a corresponding attentiveness check; and 
 - e) a CIS response assessment.
 
-The screenshot of one of the tasks used in the crowdsourcing process can be found [here](/crowdsourcing_task_design/task_design.png).
+The screenshot of one of the tasks used in the crowdsourcing process can be found [here](/crowdsourcing_task_design/task_design.png). It presents specific questions used in the questionnaires.
 
 ## Experimental Conditions
 
