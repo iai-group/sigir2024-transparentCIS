@@ -10,7 +10,7 @@ Each HIT contains ten query-response pairs and consists of:
 - E) a post-task questionnaire; and 
 - F) a demographics questionnaire.
 
-![](/task_components.png)
+![](task_components.png)
 
 Part C contains a pre-use explanation of the system. It aims at improving the following competencies of the users: (1) understanding the capabilities of the system, and (2) understanding that the response is limited to 3 sentences only. We decompose part D of the user study into multiple subsections using independent CIS interactions to facilitate atomic microtask crowdsourcing. Each CIS interaction contains: 
 - a) a query; 
@@ -19,7 +19,7 @@ Part C contains a pre-use explanation of the system. It aims at improving the fo
 - d) a corresponding attentiveness check; and 
 - e) a CIS response assessment.
 
-The screenshot of one of the tasks used in the crowdsourcing process can be found [here](/task_design.png). It presents specific questions used in the questionnaires.
+The screenshot of one of the tasks used in the crowdsourcing process can be found [here](task_design.png). It presents specific questions used in the questionnaires.
 
 ## Experimental Conditions
 
