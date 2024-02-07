@@ -1,5 +1,5 @@
 import collections
-from typing import List
+from typing import Dict, List
 
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -7,7 +7,7 @@ import pandas as pd
 
 def process_data_for_distribution_plot(
     response_dimensions: List[str], data_df: pd.DataFrame, main_feature: str
-):
+) -> Dict[str, Dict[str, List[int]]]:
     """Processes the data for the distribution plot.
 
     Args:

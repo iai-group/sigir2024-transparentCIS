@@ -8,99 +8,183 @@ from statsmodels.stats.anova import anova_lm
 
 
 def effect_size(
-    data_df: pd.DataFrame, aov_table: pd.DataFrame
+    data_df: pd.DataFrame, aov_table
 ) -> Tuple[List[float], List[str]]:
-    """Calculates the effect size for each parameter.
+    """Computes the effect size for the ANOVA table.
 
     Args:
-        aov_table: Pd.DataFrame containing the ANOVA table.
-        data_df: Dataframe containing the data.
+        data_df: Dataframe containing the results from a user study.
+        aov_table: ANOVA table.
 
     Returns:
-        A tuple containing the effect size and the size.
+        A list of effect sizes and a list of sizes.
     """
     w2facts = []
     sizes = []
     for id, row in aov_table.iterrows():
-        w2fact = round((row['df'] * (row['F'] - 1)) / (row['df'] * (row['F'] - 1) + len(data_df)), 3)
+        w2fact = round(
+            (row["df"] * (row["F"] - 1))
+            / (row["df"] * (row["F"] - 1) + len(data_df)),
+            3,
+        )
         w2facts.append(w2fact)
         if w2fact >= 0.14:
-            size = 'L'
+            size = "L"
         elif w2fact >= 0.06 and w2fact < 0.14:
-            size = 'M'
+            size = "M"
         elif w2fact >= 0.00 and w2fact < 0.06:
-            size = 'S'
+            size = "S"
         else:
-            size = '-'
+            size = "-"
         sizes.append(size)
     return w2facts, sizes
 
 
 def one_way_anova(
-    data_df: pd.DataFrame,
-    answer_feature: List[str],
-    independent_variable: str,
-):
-    """Runs a one-way ANOVA test.
+    data_df: pd.DataFrame, answer_feature: str, independent_variable: str
+) -> Tuple[str, str, str]:
+    """Computes the one-way ANOVA for the given data.
 
     Args:
-        data_df: Dataframe containing the data.
+        data_df: Dataframe containing the results from a user study.
         answer_feature: Answer feature.
         independent_variable: Independent variable.
+
+    Returns:
+        A tuple containing the answer feature, the independent variable, and the
+        p-value.
     """
-    dataframe = pd.DataFrame({independent_variable: list(data_df[independent_variable]),
-                            answer_feature: list(data_df[answer_feature])})
+    dataframe = pd.DataFrame(
+        {
+            independent_variable: list(data_df[independent_variable]),
+            answer_feature: list(data_df[answer_feature]),
+        }
+    )
 
-    formula = answer_feature + ' ~ C(' + independent_variable + ') '
+    formula = answer_feature + " ~ C(" + independent_variable + ") "
     model = ols(formula, dataframe).fit()
     aov_table = anova_lm(model, typ=2)
 
     w2facts, sizes = effect_size(data_df, aov_table)
-    aov_table['w2facts'] = w2facts
-    aov_table['sizes'] = sizes
-
-    for _, row in aov_table.iterrows():
-        if row.name != 'Residual':
-            param = row.name.replace('C(', '').replace(')', '').replace('answers_ids', 'answer condition').replace('questions_ids', 'question').lower()
-            fvalue = round(row['F'], 3)
-            pvalue = round(row['PR(>F)'], 3)
-            if pvalue <= 0.05:
-                return  str(answer_feature), '\\textbf{' + str(param) + '}', '\\bfseries' + str(pvalue) + ' { (' + str(row['sizes']) + ')}'
-            else:
-                return str(answer_feature), str(param), str(pvalue) + ' { (' + str(row['sizes']) + ')}'
-
-
-def two_way_anova (data_df, answer_feature, first_independent_variable, second_independent_variable):
-    dataframe = pd.DataFrame({first_independent_variable: list(data_df[first_independent_variable]),
-                                second_independent_variable: list(data_df[second_independent_variable]),
-                                answer_feature: list(data_df[answer_feature])})
-
-    formula = answer_feature + ' ~ C(' + first_independent_variable + ') + C(' + second_independent_variable + ') + C(' + first_independent_variable + '):C(' + second_independent_variable + ')'
-    model = ols(formula, dataframe).fit()
-    aov_table = anova_lm(model, typ=2)
-
-    w2facts, sizes = effect_size(data_df, aov_table)
-    aov_table['w2facts'] = w2facts
-    aov_table['sizes'] = sizes
+    aov_table["w2facts"] = w2facts
+    aov_table["sizes"] = sizes
 
     # print(aov_table.round(3))
 
     for _, row in aov_table.iterrows():
-        if row.name != 'Residual':
-            param = row.name.replace('C(', '').replace(')', '').replace('answers_ids', 'answer condition').replace('questions_ids', 'question').lower()
-            fvalue = round(row['F'], 3)
-            pvalue = round(row['PR(>F)'], 3)
+        if row.name != "Residual":
+            param = (
+                row.name.replace("C(", "")
+                .replace(")", "")
+                .replace("answers_ids", "answer condition")
+                .replace("questions_ids", "question")
+                .lower()
+            )
+            fvalue = round(row["F"], 3)
+            pvalue = round(row["PR(>F)"], 3)
+            if pvalue <= 0.05:
+                return (
+                    str(answer_feature),
+                    "\\textbf{" + str(param) + "}",
+                    "\\bfseries"
+                    + str(pvalue)
+                    + " { ("
+                    + str(row["sizes"])
+                    + ")}",
+                )
+            else:
+                return (
+                    str(answer_feature),
+                    str(param),
+                    str(pvalue) + " { (" + str(row["sizes"]) + ")}",
+                )
+
+
+def two_way_anova(
+    data_df: pd.DataFrame,
+    answer_feature: str,
+    first_independent_variable: str,
+    second_independent_variable: str,
+) -> Tuple[str, str, str]:
+    """Computes the two-way ANOVA for the given data.
+
+    Args:
+        data_df: Dataframe containing the results from a user study.
+        answer_feature: Answer feature.
+        first_independent_variable: First independent variable.
+        second_independent_variable: Second independent variable.
+
+    Returns:
+        A tuple containing the answer feature, the independent variable, and the
+        p-value.
+    """
+    dataframe = pd.DataFrame(
+        {
+            first_independent_variable: list(
+                data_df[first_independent_variable]
+            ),
+            second_independent_variable: list(
+                data_df[second_independent_variable]
+            ),
+            answer_feature: list(data_df[answer_feature]),
+        }
+    )
+
+    formula = (
+        answer_feature
+        + " ~ C("
+        + first_independent_variable
+        + ") + C("
+        + second_independent_variable
+        + ") + C("
+        + first_independent_variable
+        + "):C("
+        + second_independent_variable
+        + ")"
+    )
+    model = ols(formula, dataframe).fit()
+    aov_table = anova_lm(model, typ=2)
+
+    w2facts, sizes = effect_size(data_df, aov_table)
+    aov_table["w2facts"] = w2facts
+    aov_table["sizes"] = sizes
+
+    # print(aov_table.round(3))
+
+    for _, row in aov_table.iterrows():
+        if row.name != "Residual":
+            param = (
+                row.name.replace("C(", "")
+                .replace(")", "")
+                .replace("answers_ids", "answer condition")
+                .replace("questions_ids", "question")
+                .lower()
+            )
+            fvalue = round(row["F"], 3)
+            pvalue = round(row["PR(>F)"], 3)
 
             if ":" in param:
                 if pvalue <= 0.05:
-                    return str(answer_feature), str(param), '\\textbf{' + str(pvalue) + ' (' + str(row['sizes']) + ')}'
+                    return (
+                        str(answer_feature),
+                        str(param),
+                        "\\textbf{"
+                        + str(pvalue)
+                        + " ("
+                        + str(row["sizes"])
+                        + ")}",
+                    )
                 else:
-                    return str(answer_feature), str(param), str(pvalue) + ' (' + str(row['sizes']) + ')'
+                    return (
+                        str(answer_feature),
+                        str(param),
+                        str(pvalue) + " (" + str(row["sizes"]) + ")",
+                    )
 
 
 if __name__ == "__main__":
     aggregated_data = pd.read_csv(
-        "results/user_study_output/output_processed_aggregated.csv"
+        "results/user_study_output/all_merged_processed_aggregated.csv"
     )
 
     for feature in [
@@ -125,7 +209,6 @@ if __name__ == "__main__":
 
     if args.type == "one-way":
         print("All conditions (EC1–EC10)")
-
         features = [
             "usefulness",
             "relevance",
@@ -167,7 +250,7 @@ if __name__ == "__main__":
                 + " & ".join(list(pvalues.values()))
                 + " \\\\"
             )
-        print(len(aggregated_data))
+
         print("Only conditions with explanations (EC1–EC8)")
 
         aggregated_data_ec1_8 = aggregated_data[
@@ -192,7 +275,6 @@ if __name__ == "__main__":
                 + " & ".join(list(pvalues.values()))
                 + " \\\\"
             )
-        print(len(aggregated_data_ec1_8))
 
     elif args.type == "two-way":
         print("Interactions with Query")

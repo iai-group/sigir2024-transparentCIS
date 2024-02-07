@@ -102,8 +102,6 @@ if __name__ == "__main__":
                 }
             )
 
-            # print(additional_info_df)
-
             metrics = [
                 "familiarity",
                 "interest",
@@ -161,8 +159,6 @@ if __name__ == "__main__":
                         row["Answer.explanation_" + str(question_id)]
                     )
 
-            # print(output['Input.query'])
-            # print(list(output['Input.query'])[0])
             questions = ast.literal_eval(list(output["Input.query"])[0])
 
             worker_ids = []

@@ -1,11 +1,18 @@
-from typing import List
+from typing import Dict, List
 
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
 
-def add_bar_labels(ax, bar, labels):
+def add_bar_labels(ax, bar, labels) -> None:
+    """Add labels to the top of the bars in a bar plot.
+
+    Args:
+        ax: The axis of the plot.
+        bar: The bars in the plot.
+        labels: The labels to add to the bars.
+    """
     for rect, bar_mean in zip(bar, labels):
         height = rect.get_height()
         ax.text(
@@ -25,7 +32,20 @@ def get_mean_usefulness_scores(
     data_cond_variable: str,
     resp_dim: str,
     data_df: pd.DataFrame,
-):
+) -> Dict[str, Dict[str, float]]:
+    """Gets the mean usefulness scores for explanations.
+
+    Args:
+        dist_variable_variants: Variants of the distribution variable.
+        dist_variable: Distribution variable.
+        data_cond_variants: Variants of the data condition variable.
+        data_cond_variable: Data condition variable.
+        resp_dim: Response dimension.
+        data_df: Dataframe containing the results from a user study.
+
+    Returns:
+        A dictionary containing the mean usefulness scores for explanations.
+    """
     means = {}
     means["All data"] = {}
     for value in dist_variable_variants:

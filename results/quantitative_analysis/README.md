@@ -38,7 +38,7 @@ Mean scores for response usefulness and explanation user ratings for different q
 
 ![](mean_scores/means_explanation_ratings_explanation_presentation.png)
 
-Mean scores for other response dimensions for different quality of the explanations and presentation mode can be generated using ....
+<!-- Mean scores for other response dimensions for different quality of the explanations and presentation mode can be generated using .... -->
 
 ## Data distribution
 
