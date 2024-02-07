@@ -30,7 +30,7 @@ The following sections provides details about the qualitative analysis of the co
 
 ## Manual Annotation of Comments
 
-We manually investigate the feedback given by crowd workers regarding their ratings for the source, confidence, and limitations explanations, seeking insights and suggestions to enhance their content and presentation. The manual labels can be found .
+We manually investigate the feedback given by crowd workers regarding their ratings for the source, confidence, and limitations explanations, seeking insights and suggestions to enhance their content and presentation. The manual labels can be found [here](comments_annotations.csv).
 
 ### Analysis of the results
 
